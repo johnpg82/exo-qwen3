@@ -533,6 +533,64 @@ model_cards: ModelCardCollection = {
       "MLXDynamicShardInferenceEngine": "mlx-community/Qwen2.5-Math-72B-Instruct-4bit",
     },
   ),
+  ### qwen3-moe
+  "qwen3-235b-a22b": ModelCard(
+    pretty_name="Qwen3 235B (A22B)",
+    layers=94,
+    repo={
+      "MLXDynamicShardInferenceEngine": "Qwen/Qwen3-235B-A22B",
+    },
+  ),
+  "qwen3-30b-a3b": ModelCard(
+    pretty_name="Qwen3 30B (A3B)",
+    layers=48,
+    repo={
+      "MLXDynamicShardInferenceEngine": "Qwen/Qwen3-30B-A3B",
+    },
+  ),
+  ### qwen3
+  "qwen3-32b": ModelCard(
+    pretty_name="Qwen3 32B",
+    layers=64,
+    repo={
+      "MLXDynamicShardInferenceEngine": "Qwen/Qwen3-32B",
+    },
+  ),
+  "qwen3-14b": ModelCard(
+    pretty_name="Qwen3 14B",
+    layers=40,
+    repo={
+      "MLXDynamicShardInferenceEngine": "Qwen/Qwen3-14B",
+    },
+  ),
+  "qwen3-8b": ModelCard(
+    pretty_name="Qwen3 8B",
+    layers=36,
+    repo={
+      "MLXDynamicShardInferenceEngine": "Qwen/Qwen3-8B",
+    },
+  ),
+  "qwen3-4b": ModelCard(
+    pretty_name="Qwen3 4B",
+    layers=36,
+    repo={
+      "MLXDynamicShardInferenceEngine": "Qwen/Qwen3-4B",
+    },
+  ),
+  "qwen3-1.7b": ModelCard(
+    pretty_name="Qwen3 1.7B",
+    layers=28,
+    repo={
+      "MLXDynamicShardInferenceEngine": "Qwen/Qwen3-1.7B",
+    },
+  ),
+  "qwen3-0.6b": ModelCard(
+    pretty_name="Qwen3 0.6B",
+    layers=28,
+    repo={
+      "MLXDynamicShardInferenceEngine": "Qwen/Qwen3-0.6B",
+    },
+  ),
   ### nemotron
   "nemotron-70b": ModelCard(
     pretty_name="Nemotron 70B",
