@@ -138,6 +138,48 @@ model_cards: ModelCardCollection = {
     },
   ),
   ### deepseek
+  "deepseek-r1-0528": ModelCard(
+    pretty_name="Deepseek R1 0528 (full)",
+    layers=61,
+    repo={
+      "MLXDynamicShardInferenceEngine": "deepseek-ai/DeepSeek-R1-0528",
+    },
+  ),
+  "deepseek-r1-zero": ModelCard(
+    pretty_name="Deepseek R1 Zero (full)",
+    layers=61,
+    repo={
+      "MLXDynamicShardInferenceEngine": "deepseek-ai/DeepSeek-R1-Zero",
+    },
+  ),
+  "deepseek-r1": ModelCard(
+    pretty_name="Deepseek R1 (full)",
+    layers=61,
+    repo={
+      "MLXDynamicShardInferenceEngine": "deepseek-ai/DeepSeek-R1",
+    },
+  ),
+  "deepseek-v3-0324": ModelCard(
+    pretty_name="Deepseek V3 0324 (full)",
+    layers=61,
+    repo={
+      "MLXDynamicShardInferenceEngine": "deepseek-ai/DeepSeek-V3-0324",
+    },
+  ),
+  "deepseek-v3": ModelCard(
+    pretty_name="Deepseek V3 (full)",
+    layers=61,
+    repo={
+      "MLXDynamicShardInferenceEngine": "deepseek-ai/DeepSeek-V3",
+    },
+  ),
+  "deepseek-r1-0528-Qwen3-8B": ModelCard(
+    pretty_name="Deepseek R1 0528 Qwen3 8B",
+    layers=36,
+    repo={
+      "MLXDynamicShardInferenceEngine": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+    },
+  ),
   "deepseek-coder-v2-lite": ModelCard(
     pretty_name="Deepseek Coder V2 Lite",
     layers=27,
@@ -152,7 +194,7 @@ model_cards: ModelCardCollection = {
       "MLXDynamicShardInferenceEngine": "mlx-community/DeepSeek-V2.5-MLX-AQ4_1_64",
     },
   ),
-  "deepseek-v3": ModelCard(
+  "deepseek-v3-4bit": ModelCard(
     pretty_name="Deepseek V3 (4-bit)",
     layers=61,
     repo={

@@ -15,7 +15,7 @@ class ModelArgs(ModelArgs):
   shard: Shard = field(default_factory=lambda: Shard("", 0, 0, 0))
 
   def __post_init__(self):
-    super().__post_init__()  # Ensure parent initializations are respected
+    # super().__post_init__()  # Ensure parent initializations are respected
 
     if isinstance(self.shard, Shard):
       return
