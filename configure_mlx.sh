@@ -6,11 +6,11 @@ set -euo pipefail
 TOTAL_MEM_MB=$(($(sysctl -n hw.memsize) / 1024 / 1024))
 
 # Calculate 80% and TOTAL_MEM_GB-5GB in MB
-EIGHTY_PERCENT=$(($TOTAL_MEM_MB * 80 / 100))
+EIGHTY_PERCENT=$(($TOTAL_MEM_MB * 90 / 100))
 MINUS_5GB=$((($TOTAL_MEM_MB - 5120)))
 
 # Calculate 70% and TOTAL_MEM_GB-8GB in MB
-SEVENTY_PERCENT=$(($TOTAL_MEM_MB * 70 / 100))
+SEVENTY_PERCENT=$(($TOTAL_MEM_MB * 80 / 100))
 MINUS_8GB=$((($TOTAL_MEM_MB - 8192)))
 
 # Set WIRED_LIMIT_MB to higher value
