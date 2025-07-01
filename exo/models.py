@@ -534,11 +534,18 @@ model_cards: ModelCardCollection = {
     },
   ),
   ### qwen3-moe
-  "qwen3-235b-a22b-8bit": ModelCard(
-    pretty_name="Qwen3 235B (A22B) (8-bit)",
+  "qwen3-235b-a22b-8bit-mlx": ModelCard(
+    pretty_name="Qwen3 235B (A22B) (8-bit) (MLX-community)",
     layers=94,
     repo={
       "MLXDynamicShardInferenceEngine": "mlx-community/Qwen3-235B-A22B-8bit",
+    },
+  ),
+  "qwen3-235b-a22b-8bit": ModelCard(
+    pretty_name="Qwen3 235B (A22B) (8-bit) (Official)",
+    layers=94,
+    repo={
+      "MLXDynamicShardInferenceEngine": "Qwen/Qwen3-235B-A22B-FP8",
     },
   ),
   "qwen3-235b-a22b": ModelCard(
