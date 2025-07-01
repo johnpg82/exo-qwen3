@@ -37,7 +37,7 @@ extras_require = {
   "formatting": ["yapf==0.40.2",],
   "apple_silicon": [
     "mlx==0.26.1",
-    "mlx-lm==0.25.2",
+    "mlx-lm==0.25.3",
   ],
   "windows": ["pywin32==308",],
   "nvidia-gpu": ["nvidia-ml-py==12.560.30",],
