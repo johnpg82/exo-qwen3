@@ -92,6 +92,35 @@ class Model(nn.Module):
     return out
 
   def sanitize(self, weights):
+    def dequant(weight, scale_inv):
+      dtype = weight.dtype
+      bs = 128  # block size
+      m, n = weight.shape
+      pad_bottom = (-m) % bs
+      pad_side = (-n) % bs
+      weight = mx.pad(weight, ((0, pad_bottom), (0, pad_side)))
+      weight = weight.reshape(
+        ((m + pad_bottom) // bs, bs, (n + pad_side) // bs, bs)
+      )
+      weight = (weight * scale_inv[:, None, :, None]).reshape(
+        m + pad_bottom, n + pad_side
+      )
+      return weight[:m, :n].astype(dtype)
+
+    # Dequantize weights that have scale_inv parameters
+    new_weights = {}
+    for k, v in weights.items():
+      if "weight_scale_inv" in k:
+        scale_inv = v
+        wk = k.replace("_scale_inv", "")
+        if wk in weights:
+          weight = weights[wk]
+          weight = dequant(weight, scale_inv)
+          new_weights[wk] = weight
+      elif k not in new_weights:
+        new_weights[k] = v
+    weights = new_weights
+
     shard_state_dict = {}
 
     for key, value in weights.items():
@@ -104,6 +133,7 @@ class Model(nn.Module):
       elif self.args.shard.is_last_layer() and (key.startswith('model.norm') or key.startswith('lm_head')):
         shard_state_dict[key] = value
 
+    # Stack experts for MoE layers
     for l in range(self.args.num_hidden_layers):
       prefix = f"model.layers.{l}"
       for n, m in [("w1", "gate_proj"), ("w2", "down_proj"), ("w3", "up_proj")]:
@@ -115,6 +145,12 @@ class Model(nn.Module):
               for e in range(self.args.n_routed_experts)
             ]
             shard_state_dict[f"{prefix}.mlp.switch_mlp.{m}.{k}"] = mx.stack(to_join)
+
+    # Remove unused precomputed rotary freqs
+    shard_state_dict = {
+      k: v for k, v in shard_state_dict.items() 
+      if "rotary_emb.inv_freq" not in k
+    }
 
     return shard_state_dict
 
