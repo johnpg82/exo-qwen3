@@ -138,6 +138,13 @@ model_cards: ModelCardCollection = {
     },
   ),
   ### deepseek
+  "deepseek-r1-0528-4bit": ModelCard(
+    pretty_name="Deepseek R1 0528 (4-bit)",
+    layers=61,
+    repo={
+      "MLXDynamicShardInferenceEngine": "mlx-community/DeepSeek-R1-0528-4bit",
+    },
+  ),
   "deepseek-r1-0528": ModelCard(
     pretty_name="Deepseek R1 0528 (full)",
     layers=61,
