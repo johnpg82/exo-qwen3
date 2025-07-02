@@ -62,7 +62,8 @@ class InferenceResultManager:
     return self.partial_tokens_map[request_id]
 
   def remove_partial_tokens(self, request_id: str) -> List[int]:
-    del self.partial_tokens_map[request_id]
+    if request_id in self.partial_tokens_map:
+      del self.partial_tokens_map[request_id]
 
   async def handle_tokens(self, request_id: str, tokens: List[int], is_finished: bool,
                           finish_reason: Optional[str] = None):
@@ -75,6 +76,10 @@ class InferenceResultManager:
         is_finished: Whether this is the final set of tokens
         finish_reason: Reason for finishing, if applicable
     """
+    # Check if tokenizer still exists (race condition protection)
+    if request_id not in self.tokenizers:
+      return
+    
     tokenizer = self.get_tokenizer(request_id)
 
     if len(tokens) > 0 and tokens[-1] == tokenizer.eos_token_id:
@@ -103,12 +108,14 @@ class InferenceResultManager:
         partial_tokens.clear()
 
 
-    await self.token_queues[request_id].put(InferenceResultChunk(
-      text=content,
-      tokens=result_tokens,
-      is_finished=is_finished,
-      finish_reason=finish_reason
-    ))
+    # Check if queue still exists (race condition protection)
+    if request_id in self.token_queues:
+      await self.token_queues[request_id].put(InferenceResultChunk(
+        text=content,
+        tokens=result_tokens,
+        is_finished=is_finished,
+        finish_reason=finish_reason
+      ))
 
     if is_finished:
       self.remove_partial_tokens(request_id)
