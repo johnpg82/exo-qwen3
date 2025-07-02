@@ -173,10 +173,13 @@ def load_model_shard(
         return False
       return f"{p}.scales" in weights
 
+    # Filter to only include valid nn.quantize parameters
+    valid_params = {k: v for k, v in quantization.items() 
+                    if k in ["group_size", "bits"]}
 
     nn.quantize(
       model,
-      **quantization,
+      **valid_params,
       class_predicate=class_predicate,
     )
 
