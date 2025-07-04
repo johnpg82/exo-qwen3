@@ -166,11 +166,25 @@ model_cards: ModelCardCollection = {
       "MLXDynamicShardInferenceEngine": "deepseek-ai/DeepSeek-R1",
     },
   ),
+  "deepseek-r1-mlx": ModelCard(
+    pretty_name="Deepseek R1 (full, mlx)",
+    layers=61,
+    repo={
+      "MLXDynamicShardInferenceEngine": "mlx-community/DeepSeek-R1",
+    },
+  ),
   "deepseek-v3-0324": ModelCard(
     pretty_name="Deepseek V3 0324 (full)",
     layers=61,
     repo={
       "MLXDynamicShardInferenceEngine": "deepseek-ai/DeepSeek-V3-0324",
+    },
+  ),
+  "deepseek-v3-0324-mlx": ModelCard(
+    pretty_name="Deepseek V3 0324 (full, mlx)",
+    layers=61,
+    repo={
+      "MLXDynamicShardInferenceEngine": "mlx-community/DeepSeek-v3-0324-8bit",
     },
   ),
   "deepseek-v3": ModelCard(
@@ -546,13 +560,6 @@ model_cards: ModelCardCollection = {
     layers=94,
     repo={
       "MLXDynamicShardInferenceEngine": "mlx-community/Qwen3-235B-A22B-8bit",
-    },
-  ),
-  "qwen3-235b-a22b-8bit": ModelCard(
-    pretty_name="Qwen3 235B (A22B) (8-bit) (Official)",
-    layers=94,
-    repo={
-      "MLXDynamicShardInferenceEngine": "Qwen/Qwen3-235B-A22B-FP8",
     },
   ),
   "qwen3-235b-a22b": ModelCard(
