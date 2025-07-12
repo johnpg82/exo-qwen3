@@ -619,6 +619,14 @@ model_cards: ModelCardCollection = {
       "MLXDynamicShardInferenceEngine": "Qwen/Qwen3-0.6B",
     },
   ),
+  ### kimi
+  "kimi-k2-instruct-4bit": ModelCard(
+    pretty_name="Kimi K2 Instruct 1T 32B (4-bit)",
+    layers=61,
+    repo={
+      "MLXDynamicShardInferenceEngine": "mlx-community/Kimi-K2-Instruct-4bit",
+    },
+  ),
   ### nemotron
   "nemotron-70b": ModelCard(
     pretty_name="Nemotron 70B",
