@@ -34,6 +34,7 @@ class ModelNotFoundError(Exception):
 MODEL_REMAPPING = {
   "mistral": "llama",  # mistral is compatible with llama
   "phi-msft": "phixtral",
+  "kimi_k2": "deepseek_v3",  # Kimi K2 uses DeepSeek V3 architecture
 }
 
 
