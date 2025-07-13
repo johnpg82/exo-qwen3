@@ -80,7 +80,8 @@ def extract_layer_num(tensor_name: str) -> Optional[int]:
   return None
 
 def get_allow_patterns(weight_map: Dict[str, str], shard: Shard) -> List[str]:
-  default_patterns = set(["*.json", "*.py", "tokenizer.model", "*.tiktoken", "*.txt"])
+  # Download all files without filtering
+  default_patterns = set(["*"])
   shard_specific_patterns = set()
   if weight_map:
     for tensor_name, filename in weight_map.items():
