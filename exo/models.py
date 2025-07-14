@@ -14,6 +14,7 @@ class ModelCard(BaseModel):
 
   default_tool_call_format: Optional[str] = None
   chat_template: Optional[str] = None
+  default_stop_sequences: Optional[List[str]] = None
 
 ModelCardCollection = dict[str, ModelCard]
 
@@ -626,6 +627,7 @@ model_cards: ModelCardCollection = {
     repo={
       "MLXDynamicShardInferenceEngine": "mlx-community/Kimi-K2-Instruct-4bit",
     },
+    default_stop_sequences=["<|im_end|>"],
   ),
   ### nemotron
   "nemotron-70b": ModelCard(

@@ -299,12 +299,19 @@ class ChatGPTAPI:
 
     if DEBUG >= 2: print(f"[ChatGPTAPI] Processing prompt: {request_id=} {shard=} {prompt=}")
 
+    # Get generation options and merge with model card defaults
+    generation_options = chat_request.to_generation_options()
+    if model_card and model_card.default_stop_sequences:
+      # Merge default stop sequences with user-provided ones
+      existing_stop = generation_options.stop or []
+      generation_options.stop = list(set(existing_stop + model_card.default_stop_sequences))
+
     try:
       await asyncio.wait_for(asyncio.shield(asyncio.create_task(self.node.process_prompt(
         shard,
         prompt,
         request_id=request_id,
-        generation_options=chat_request.to_generation_options()
+        generation_options=generation_options
       ))), timeout=self.response_timeout)
 
       if DEBUG >= 2:
