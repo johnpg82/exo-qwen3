@@ -556,6 +556,13 @@ model_cards: ModelCardCollection = {
     },
   ),
   ### qwen3-moe
+  "qwen3-coder-480b-a35b-4bit": ModelCard(
+    pretty_name="Qwen3 Coder 480B (A35B) (4-bit)",
+    layers=120,
+    repo={
+      "MLXDynamicShardInferenceEngine": "mlx-community/Qwen3-Coder-480B-A35B-Instruct-4bit",
+    },
+  ),
   "qwen3-235b-a22b-8bit-mlx": ModelCard(
     pretty_name="Qwen3 235B (A22B) (8-bit) (MLX-community)",
     layers=94,
@@ -577,7 +584,6 @@ model_cards: ModelCardCollection = {
       "MLXDynamicShardInferenceEngine": "Qwen/Qwen3-30B-A3B",
     },
   ),
-  ### qwen3
   "qwen3-32b": ModelCard(
     pretty_name="Qwen3 32B",
     layers=64,
